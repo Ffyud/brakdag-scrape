@@ -7,6 +7,9 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+from dvhn.pipelines import DvhnUpdateLink
+
+
 BOT_NAME = 'dvhn'
 
 SPIDER_MODULES = ['dvhn.spiders']
@@ -62,9 +65,10 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'dvhn.pipelines.DvhnPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'dvhn.pipelines.DvhnPipeline': 100,
+   'dvhn.pipelines.DvhnUpdateLink': 200
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

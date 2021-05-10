@@ -9,5 +9,10 @@ from itemadapter import ItemAdapter
 
 
 class DvhnPipeline:
-    def process_item(self, item, spider):
-        return item
+    def process_item(self, article, spider):
+        return article
+
+class DvhnUpdateLink:
+    def process_item(self, article, spider):
+        article['link'] = "https://dvhn.nl" + article['link']
+        return article
